@@ -1,0 +1,689 @@
+[
+  { "source": "MOLLE", "category": "protected", "policy": "preserve" },
+  { "source": "PALS", "category": "protected", "policy": "preserve" },
+  { "source": "Picatinny", "category": "protected", "policy": "preserve" },
+  { "source": "Weaver", "category": "protected", "policy": "preserve" },
+  { "source": "IFAK", "category": "protected", "policy": "preserve" },
+  { "source": "NVG", "category": "protected", "policy": "preserve" },
+  { "source": "MIL-STD-810G", "category": "protected", "policy": "preserve" },
+  { "source": "EN 343", "category": "protected", "policy": "preserve" },
+  { "source": "EN ISO 20471", "category": "protected", "policy": "preserve" },
+  { "source": "NIJ IIIA", "category": "protected", "policy": "preserve" },
+  { "source": "NIJ III", "category": "protected", "policy": "preserve" },
+  { "source": "NIJ IV", "category": "protected", "policy": "preserve" },
+  { "source": "IP54", "category": "protected", "policy": "preserve" },
+  { "source": "IP67", "category": "protected", "policy": "preserve" },
+  { "source": "IP68", "category": "protected", "policy": "preserve" },
+  { "source": "IK10", "category": "protected", "policy": "preserve" },
+  { "source": "GORE-TEX", "category": "protected", "policy": "preserve" },
+  { "source": "Cordura", "category": "protected", "policy": "preserve" },
+  { "source": "Kevlar", "category": "protected", "policy": "preserve" },
+  { "source": "Aramid", "category": "protected", "policy": "preserve" },
+  { "source": "MULTICAM BLACK", "category": "protected", "policy": "preserve" },
+  { "source": "MULTICAM", "category": "protected", "policy": "preserve" },
+  { "source": "KRYPTEK", "category": "protected", "policy": "preserve" },
+  { "source": "ATACS", "category": "protected", "policy": "preserve" },
+  { "source": "RAL", "category": "protected", "policy": "preserve", "notes": "Kody kolorów RAL, np. RAL 7013 — zachować w całości." },
+  { "source": "SKU", "category": "protected", "policy": "preserve" },
+  { "source": "EAN", "category": "protected", "policy": "preserve" },
+  { "source": "GTIN", "category": "protected", "policy": "preserve" },
+  { "source": "NATO", "category": "protected", "policy": "preserve" },
+  { "source": "RoHS", "category": "protected", "policy": "preserve" },
+  { "source": "REACH", "category": "protected", "policy": "preserve" },
+
+  { "source": "Helikon-Tex", "category": "brand", "policy": "preserve" },
+  { "source": "Helikon", "category": "brand", "policy": "preserve" },
+  { "source": "5.11 Tactical", "category": "brand", "policy": "preserve" },
+  { "source": "Magpul", "category": "brand", "policy": "preserve" },
+  { "source": "Mil-Tec", "category": "brand", "policy": "preserve" },
+  { "source": "Pentagon", "category": "brand", "policy": "preserve" },
+  { "source": "M-Tac", "category": "brand", "policy": "preserve" },
+  { "source": "Direct Action", "category": "brand", "policy": "preserve" },
+  { "source": "Condor", "category": "brand", "policy": "preserve" },
+  { "source": "BlackHawk", "category": "brand", "policy": "preserve" },
+  { "source": "Crye Precision", "category": "brand", "policy": "preserve" },
+  { "source": "MFH", "category": "brand", "policy": "preserve" },
+  { "source": "Tasmanian Tiger", "category": "brand", "policy": "preserve" },
+  { "source": "Maxpedition", "category": "brand", "policy": "preserve" },
+  { "source": "Voodoo Tactical", "category": "brand", "policy": "preserve" },
+  { "source": "Esstac", "category": "brand", "policy": "preserve" },
+  { "source": "Beretta", "category": "brand", "policy": "preserve" },
+  { "source": "Glock", "category": "brand", "policy": "preserve" },
+  { "source": "Sig Sauer", "category": "brand", "policy": "preserve" },
+  { "source": "Walther", "category": "brand", "policy": "preserve" },
+  { "source": "Smith & Wesson", "category": "brand", "policy": "preserve" },
+  { "source": "Heckler & Koch", "category": "brand", "policy": "preserve" },
+  { "source": "Aimpoint", "category": "brand", "policy": "preserve" },
+  { "source": "Holosun", "category": "brand", "policy": "preserve" },
+  { "source": "Vortex", "category": "brand", "policy": "preserve" },
+  { "source": "Trijicon", "category": "brand", "policy": "preserve" },
+  { "source": "EOTech", "category": "brand", "policy": "preserve" },
+  { "source": "Streamlight", "category": "brand", "policy": "preserve" },
+  { "source": "Surefire", "category": "brand", "policy": "preserve" },
+  { "source": "Fenix", "category": "brand", "policy": "preserve" },
+  { "source": "Olight", "category": "brand", "policy": "preserve" },
+  { "source": "Nitecore", "category": "brand", "policy": "preserve" },
+  { "source": "Ledlenser", "category": "brand", "policy": "preserve" },
+  { "source": "Lowa", "category": "brand", "policy": "preserve" },
+  { "source": "Meindl", "category": "brand", "policy": "preserve" },
+  { "source": "Haix", "category": "brand", "policy": "preserve" },
+  { "source": "Salomon", "category": "brand", "policy": "preserve" },
+  { "source": "Suunto", "category": "brand", "policy": "preserve" },
+  { "source": "Garmin", "category": "brand", "policy": "preserve" },
+  { "source": "YKK", "category": "brand", "policy": "preserve" },
+  { "source": "Spyderco", "category": "brand", "policy": "preserve" },
+  { "source": "Benchmade", "category": "brand", "policy": "preserve" },
+  { "source": "Cold Steel", "category": "brand", "policy": "preserve" },
+  { "source": "InPost", "category": "brand", "policy": "preserve" },
+  { "source": "PayU", "category": "brand", "policy": "preserve" },
+  { "source": "BLIK", "category": "brand", "policy": "preserve" },
+  { "source": "PayPal", "category": "brand", "policy": "preserve" },
+  { "source": "Klarna", "category": "brand", "policy": "preserve" },
+  { "source": "Visa", "category": "brand", "policy": "preserve" },
+  { "source": "MasterCard", "category": "brand", "policy": "preserve" },
+
+  { "source": "Glock 19 Gen5", "category": "model", "policy": "preserve" },
+  { "source": "Glock 17", "category": "model", "policy": "preserve" },
+  { "source": "Beretta 92FS", "category": "model", "policy": "preserve" },
+  { "source": "CZ Shadow 2", "category": "model", "policy": "preserve" },
+  { "source": "M4A1", "category": "model", "policy": "preserve" },
+  { "source": "AK-47", "category": "model", "policy": "preserve" },
+  { "source": "AR-15", "category": "model", "policy": "preserve" },
+  { "source": "Aimpoint Comp M5", "category": "model", "policy": "preserve" },
+  { "source": "Holosun 510C", "category": "model", "policy": "preserve" },
+  { "source": "EOTech XPS3", "category": "model", "policy": "preserve" },
+  { "source": "Vortex Strike Eagle", "category": "model", "policy": "preserve" },
+  { "source": "Fenix PD36R", "category": "model", "policy": "preserve" },
+  { "source": "Olight Warrior Mini 3", "category": "model", "policy": "preserve" },
+  { "source": "Olight M2R Pro", "category": "model", "policy": "preserve" },
+  { "source": "Streamlight ProTac HL-X", "category": "model", "policy": "preserve" },
+  { "source": "Streamlight TLR-1", "category": "model", "policy": "preserve" },
+  { "source": "Surefire X300U", "category": "model", "policy": "preserve" },
+  { "source": "Surefire E2D", "category": "model", "policy": "preserve" },
+  { "source": "Nitecore P10iX", "category": "model", "policy": "preserve" },
+  { "source": "Helikon Bergen", "category": "model", "policy": "preserve" },
+  { "source": "Bergen", "category": "model", "policy": "preserve", "notes": "Nazwa modelu plecaka — zachować w oryginale, nie tłumaczyć." },
+  { "source": "5.11 Rush 24", "category": "model", "policy": "preserve" },
+  { "source": "Mil-Tec US Assault Pack", "category": "model", "policy": "preserve" },
+  { "source": "Spyderco Para 3", "category": "model", "policy": "preserve" },
+  { "source": "Benchmade Bugout", "category": "model", "policy": "preserve" },
+  { "source": "Cold Steel Recon 1", "category": "model", "policy": "preserve" },
+
+  { "source": "9×19 mm Parabellum", "category": "spec", "policy": "preserve" },
+  { "source": "5.56×45 mm NATO", "category": "spec", "policy": "preserve" },
+  { "source": "7.62×51 mm NATO", "category": "spec", "policy": "preserve" },
+  { "source": "7.62×39 mm", "category": "spec", "policy": "preserve" },
+  { "source": ".223 Rem", "category": "spec", "policy": "preserve" },
+  { "source": ".45 ACP", "category": "spec", "policy": "preserve" },
+  { "source": "12 GA", "category": "spec", "policy": "preserve" },
+  { "source": "MOA", "category": "spec", "policy": "preserve" },
+  { "source": "MRAD", "category": "spec", "policy": "preserve" },
+  { "source": "Cordura 500D", "category": "spec", "policy": "preserve" },
+
+  {
+    "source": "plecak taktyczny",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical backpack",
+      "en-UK": "tactical backpack",
+      "de": "taktischer Rucksack",
+      "fr": "sac à dos tactique",
+      "uk": "тактичний рюкзак",
+      "ro": "rucsac tactic",
+      "cs": "taktický batoh",
+      "hu": "taktikai hátizsák",
+      "fi": "taktinen reppu"
+    }
+  },
+  {
+    "source": "kamizelka taktyczna",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical vest",
+      "en-UK": "tactical vest",
+      "de": "taktische Weste",
+      "fr": "gilet tactique",
+      "uk": "тактичний жилет",
+      "ro": "vestă tactică",
+      "cs": "taktická vesta",
+      "hu": "taktikai mellény",
+      "fi": "taktinen liivi"
+    }
+  },
+  {
+    "source": "kamizelka kuloodporna",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "ballistic vest",
+      "en-UK": "ballistic vest",
+      "de": "ballistische Weste",
+      "fr": "gilet pare-balles",
+      "uk": "бронежилет",
+      "ro": "vestă antiglonț",
+      "cs": "neprůstřelná vesta",
+      "hu": "golyóálló mellény",
+      "fi": "luotiliivi"
+    }
+  },
+  {
+    "source": "płyta balistyczna",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "ballistic plate",
+      "en-UK": "ballistic plate",
+      "de": "ballistische Platte",
+      "fr": "plaque balistique",
+      "uk": "балістична плита",
+      "ro": "placă balistică",
+      "cs": "balistická deska",
+      "hu": "ballisztikai lap",
+      "fi": "ballistinen levy"
+    }
+  },
+  {
+    "source": "hełm balistyczny",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "ballistic helmet",
+      "en-UK": "ballistic helmet",
+      "de": "ballistischer Helm",
+      "fr": "casque balistique",
+      "uk": "балістичний шолом",
+      "ro": "cască balistică",
+      "cs": "balistická přilba",
+      "hu": "ballisztikai sisak",
+      "fi": "ballistinen kypärä"
+    }
+  },
+  {
+    "source": "mundur",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "uniform",
+      "en-UK": "uniform",
+      "de": "Uniform",
+      "fr": "uniforme",
+      "uk": "уніформа",
+      "ro": "uniformă",
+      "cs": "uniforma",
+      "hu": "egyenruha",
+      "fi": "univormu"
+    }
+  },
+  {
+    "source": "spodnie taktyczne",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical pants",
+      "en-UK": "tactical trousers",
+      "de": "taktische Hose",
+      "fr": "pantalon tactique",
+      "uk": "тактичні штани",
+      "ro": "pantaloni tactici",
+      "cs": "taktické kalhoty",
+      "hu": "taktikai nadrág",
+      "fi": "taktiset housut"
+    }
+  },
+  {
+    "source": "buty taktyczne",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical boots",
+      "en-UK": "tactical boots",
+      "de": "taktische Stiefel",
+      "fr": "rangers tactiques",
+      "uk": "тактичні черевики",
+      "ro": "bocanci tactici",
+      "cs": "taktická obuv",
+      "hu": "taktikai bakancs",
+      "fi": "taktiset saappaat"
+    }
+  },
+  {
+    "source": "kabura",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "holster",
+      "en-UK": "holster",
+      "de": "Holster",
+      "fr": "étui",
+      "uk": "кобура",
+      "ro": "toc",
+      "cs": "pouzdro",
+      "hu": "tok",
+      "fi": "kotelo"
+    }
+  },
+  {
+    "source": "latarka taktyczna",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical flashlight",
+      "en-UK": "tactical torch",
+      "de": "taktische Taschenlampe",
+      "fr": "lampe torche tactique",
+      "uk": "тактичний ліхтар",
+      "ro": "lanternă tactică",
+      "cs": "taktická svítilna",
+      "hu": "taktikai zseblámpa",
+      "fi": "taktinen taskulamppu"
+    }
+  },
+  {
+    "source": "nóż taktyczny",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical knife",
+      "en-UK": "tactical knife",
+      "de": "taktisches Messer",
+      "fr": "couteau tactique",
+      "uk": "тактичний ніж",
+      "ro": "cuțit tactic",
+      "cs": "taktický nůž",
+      "hu": "taktikai kés",
+      "fi": "taktinen veitsi"
+    }
+  },
+  {
+    "source": "karabinek",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "carbine",
+      "en-UK": "carbine",
+      "de": "Karabiner",
+      "fr": "carabine",
+      "uk": "карабін",
+      "ro": "carabină",
+      "cs": "karabina",
+      "hu": "karabély",
+      "fi": "karbiini"
+    }
+  },
+  {
+    "source": "lornetka",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "binoculars",
+      "en-UK": "binoculars",
+      "de": "Fernglas",
+      "fr": "jumelles",
+      "uk": "бінокль",
+      "ro": "binoclu",
+      "cs": "dalekohled",
+      "hu": "távcső",
+      "fi": "kiikari"
+    }
+  },
+  {
+    "source": "maska przeciwgazowa",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "gas mask",
+      "en-UK": "gas mask",
+      "de": "Gasmaske",
+      "fr": "masque à gaz",
+      "uk": "протигаз",
+      "ro": "mască de gaze",
+      "cs": "plynová maska",
+      "hu": "gázálarc",
+      "fi": "kaasunaamari"
+    }
+  },
+  {
+    "source": "saperka",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "folding shovel",
+      "en-UK": "folding shovel",
+      "de": "Klappspaten",
+      "fr": "pelle pliante",
+      "uk": "складна лопата",
+      "ro": "lopată pliabilă",
+      "cs": "skládací lopatka",
+      "hu": "összecsukható ásó",
+      "fi": "kokoontaitettava lapio"
+    }
+  },
+  {
+    "source": "ładownica",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "pouch",
+      "en-UK": "pouch",
+      "de": "Magazintasche",
+      "fr": "porte-chargeur",
+      "uk": "підсумок",
+      "ro": "port-încărcător",
+      "cs": "pouzdro na zásobníky",
+      "hu": "tártartó",
+      "fi": "makasiinitasku"
+    }
+  },
+  {
+    "source": "kuchenka turystyczna",
+    "category": "product_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "camping stove",
+      "en-UK": "camping stove",
+      "de": "Campingkocher",
+      "fr": "réchaud de camping",
+      "uk": "туристична плита",
+      "ro": "aragaz de camping",
+      "cs": "turistický vařič",
+      "hu": "kemping főző",
+      "fi": "retkikeitin"
+    }
+  },
+
+  {
+    "source": "koszyk",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "cart",
+      "en-UK": "basket",
+      "de": "Warenkorb",
+      "fr": "panier",
+      "uk": "кошик",
+      "ro": "coș",
+      "cs": "košík",
+      "hu": "kosár",
+      "fi": "ostoskori"
+    }
+  },
+  {
+    "source": "dodaj do koszyka",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "Add to cart",
+      "en-UK": "Add to basket",
+      "de": "In den Warenkorb",
+      "fr": "Ajouter au panier",
+      "uk": "Додати в кошик",
+      "ro": "Adaugă în coș",
+      "cs": "Do košíku",
+      "hu": "Kosárba",
+      "fi": "Lisää koriin"
+    }
+  },
+  {
+    "source": "przejdź do kasy",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "Checkout",
+      "en-UK": "Checkout",
+      "de": "Zur Kasse",
+      "fr": "Valider la commande",
+      "uk": "Оформити замовлення",
+      "ro": "Finalizează comanda",
+      "cs": "Pokladna",
+      "hu": "Pénztár",
+      "fi": "Kassalle"
+    }
+  },
+  {
+    "source": "dostawa",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "shipping",
+      "en-UK": "delivery",
+      "de": "Versand",
+      "fr": "livraison",
+      "uk": "доставка",
+      "ro": "livrare",
+      "cs": "doprava",
+      "hu": "szállítás",
+      "fi": "toimitus"
+    }
+  },
+  {
+    "source": "płatność",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "payment",
+      "en-UK": "payment",
+      "de": "Zahlung",
+      "fr": "paiement",
+      "uk": "оплата",
+      "ro": "plată",
+      "cs": "platba",
+      "hu": "fizetés",
+      "fi": "maksu"
+    }
+  },
+  {
+    "source": "kod pocztowy",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "ZIP code",
+      "en-UK": "postcode",
+      "de": "Postleitzahl",
+      "fr": "code postal",
+      "uk": "поштовий індекс",
+      "ro": "cod poștal",
+      "cs": "PSČ",
+      "hu": "irányítószám",
+      "fi": "postinumero"
+    }
+  },
+  {
+    "source": "zamówienie",
+    "category": "ui_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "order",
+      "en-UK": "order",
+      "de": "Bestellung",
+      "fr": "commande",
+      "uk": "замовлення",
+      "ro": "comandă",
+      "cs": "objednávka",
+      "hu": "rendelés",
+      "fi": "tilaus"
+    }
+  },
+
+  {
+    "source": "odzież taktyczna",
+    "category": "seo_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "tactical clothing",
+      "en-UK": "tactical clothing",
+      "de": "Taktische Bekleidung",
+      "fr": "vêtements tactiques",
+      "uk": "тактичний одяг",
+      "ro": "îmbrăcăminte tactică",
+      "cs": "taktické oblečení",
+      "hu": "taktikai ruházat",
+      "fi": "taktinen vaatetus"
+    }
+  },
+  {
+    "source": "akcesoria",
+    "category": "seo_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "accessories",
+      "en-UK": "accessories",
+      "de": "Zubehör",
+      "fr": "accessoires",
+      "uk": "аксесуари",
+      "ro": "accesorii",
+      "cs": "příslušenství",
+      "hu": "kiegészítők",
+      "fi": "lisävarusteet"
+    }
+  },
+  {
+    "source": "optyka",
+    "category": "seo_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "optics",
+      "en-UK": "optics",
+      "de": "Optik",
+      "fr": "optique",
+      "uk": "оптика",
+      "ro": "optică",
+      "cs": "optika",
+      "hu": "optika",
+      "fi": "optiikka"
+    }
+  },
+  { "source": "Survival", "category": "seo_term", "policy": "context", "notes": "Na wielu rynkach (DE, FI, HU, CS) często zostaje po angielsku — model wybiera zależnie od kontekstu." },
+  { "source": "Bushcraft", "category": "seo_term", "policy": "context", "notes": "Zwykle zostaje po angielsku na większości rynków." },
+  { "source": "Outdoor", "category": "seo_term", "policy": "context", "notes": "Często zostaje po angielsku; model wybiera zależnie od rynku." },
+
+  {
+    "source": "regulamin",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "Terms and Conditions",
+      "en-UK": "Terms and Conditions",
+      "de": "Allgemeine Geschäftsbedingungen (AGB)",
+      "fr": "Conditions générales",
+      "uk": "Умови та правила",
+      "ro": "Termeni și condiții",
+      "cs": "Obchodní podmínky",
+      "hu": "Általános Szerződési Feltételek",
+      "fi": "Käyttöehdot"
+    }
+  },
+  {
+    "source": "polityka prywatności",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "Privacy Policy",
+      "en-UK": "Privacy Policy",
+      "de": "Datenschutzerklärung",
+      "fr": "Politique de confidentialité",
+      "uk": "Політика конфіденційності",
+      "ro": "Politica de confidențialitate",
+      "cs": "Zásady ochrany osobních údajů",
+      "hu": "Adatvédelmi szabályzat",
+      "fi": "Tietosuojakäytäntö"
+    }
+  },
+  {
+    "source": "RODO",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "GDPR",
+      "en-UK": "GDPR",
+      "de": "DSGVO",
+      "fr": "RGPD",
+      "uk": "GDPR",
+      "ro": "GDPR",
+      "cs": "GDPR",
+      "hu": "GDPR",
+      "fi": "GDPR"
+    }
+  },
+  {
+    "source": "zwrot",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "return",
+      "en-UK": "return",
+      "de": "Rückgabe",
+      "fr": "retour",
+      "uk": "повернення",
+      "ro": "retur",
+      "cs": "vrácení",
+      "hu": "visszaküldés",
+      "fi": "palautus"
+    }
+  },
+  {
+    "source": "reklamacja",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "complaint",
+      "en-UK": "complaint",
+      "de": "Reklamation",
+      "fr": "réclamation",
+      "uk": "рекламація",
+      "ro": "reclamație",
+      "cs": "reklamace",
+      "hu": "reklamáció",
+      "fi": "reklamaatio"
+    }
+  },
+  {
+    "source": "konsument",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "consumer",
+      "en-UK": "consumer",
+      "de": "Verbraucher",
+      "fr": "consommateur",
+      "uk": "споживач",
+      "ro": "consumator",
+      "cs": "spotřebitel",
+      "hu": "fogyasztó",
+      "fi": "kuluttaja"
+    }
+  },
+  {
+    "source": "odstąpienie od umowy",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "withdrawal from contract",
+      "en-UK": "withdrawal from contract",
+      "de": "Widerrufsrecht",
+      "fr": "droit de rétractation",
+      "uk": "право на відмову",
+      "ro": "dreptul de retragere",
+      "cs": "odstoupení od smlouvy",
+      "hu": "elállás",
+      "fi": "peruuttamisoikeus"
+    }
+  },
+  {
+    "source": "VAT",
+    "category": "legal_term",
+    "policy": "translate",
+    "translations": {
+      "en-US": "VAT",
+      "en-UK": "VAT",
+      "de": "MwSt.",
+      "fr": "TVA",
+      "uk": "ПДВ",
+      "ro": "TVA",
+      "cs": "DPH",
+      "hu": "ÁFA",
+      "fi": "ALV"
+    }
+  }
+]
