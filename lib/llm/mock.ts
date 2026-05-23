@@ -183,6 +183,15 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/** Polska forma rzeczownika „wpis" dla liczebnika (1 wpis / 2–4 wpisy / 5+ wpisów). */
+function wpisForm(count: number): string {
+  if (count === 1) return "wpis";
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "wpisy";
+  return "wpisów";
+}
+
 function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -288,7 +297,7 @@ function buildMockResult(input: LlmCallInput): TranslationResult {
   if (injection.matched.length > 0) {
     qualityNotes.push({
       kind: "ok",
-      text: `Dopasowano ${injection.matched.length} wpisów glosariusza branżowego.`,
+      text: `Dopasowano ${injection.matched.length} ${wpisForm(injection.matched.length)} glosariusza branżowego.`,
     });
   }
 

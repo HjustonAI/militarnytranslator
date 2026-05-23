@@ -77,7 +77,7 @@ Aktualny tryb jest widoczny w nagłówku jako badge **Tryb: Demo** lub **Tryb: A
    model musi zachować 1:1 liczby, jednostki, kalibry, marki, modele, SKU/EAN/GTIN,
    placeholdery (`{var}`, `%s`, `{{name}}`), tagi HTML/Markdown, URL-e i numery
    telefonu. Nigdy nie zmyśla cech ani obietnic, których nie ma w źródle.
-3. **Glosariusz branżowy.** Baseline (~135 wpisów: marki, modele, standardy
+3. **Glosariusz branżowy.** Baseline (~150 wpisów: marki, modele, standardy
    MOLLE / MIL-STD / IP / NIJ, terminy outdoor/militaria, UI, SEO, prawne) jest
    wstrzykiwany do promptu tylko dla terminów obecnych w źródle. Operator może
    dodać własne wpisy per zgłoszenie; mają one priorytet nad baseline'em.

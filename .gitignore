@@ -24,3 +24,4 @@ yarn-error.log*
 # planning artifacts — kept local, not part of the deliverable
 doc/
 .claude/
+.playwright-mcp/

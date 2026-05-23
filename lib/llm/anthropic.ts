@@ -1,8 +1,14 @@
 /**
  * Adapter modelu Anthropic (doc/11) — wyłącznie po stronie serwera.
  *
- * Odpowiedź JSON wymuszana jest techniką prefill: wiadomość asystenta
- * zaczyna się od znaku „{", więc model kontynuuje czysty obiekt JSON.
+ * JSON-only wymuszany jest w prompt-cie (BASE_SYSTEM_PROMPT + końcowa linia
+ * userMessage: „Return ONLY the JSON object — no code fences, no extra text").
+ * NIE używamy prefilla wiadomości asystenta — część modeli Anthropic go
+ * odrzuca komunikatem „This model does not support assistant message prefill.
+ * The conversation must end with a user message." Parsowanie odpowiedzi
+ * (safeParseJSON → Zod → walidacje deterministyczne) tolerancyjne na drobny
+ * prose wokół JSON-a, więc prefill nie jest potrzebny.
+ *
  * Klient SDK tworzony jest leniwie — import modułu nie ma efektów ubocznych.
  */
 
@@ -10,7 +16,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import type { LlmAdapter, LlmCallInput, LlmCallOutput } from "./adapter";
 
 const DEFAULT_MODEL = "claude-sonnet-4-6";
-const MAX_TOKENS = 8192;
+const MAX_TOKENS = 4096;
 
 export const anthropicAdapter: LlmAdapter = {
   id: "anthropic",
@@ -29,17 +35,13 @@ export const anthropicAdapter: LlmAdapter = {
       max_tokens: MAX_TOKENS,
       temperature: input.prompt.modelParams.temperature,
       system: input.prompt.systemMessage,
-      messages: [
-        { role: "user", content: input.prompt.userMessage },
-        { role: "assistant", content: "{" },
-      ],
+      messages: [{ role: "user", content: input.prompt.userMessage }],
     });
 
-    const body = response.content
+    const raw = response.content
       .map((block) => (block.type === "text" ? block.text : ""))
       .join("");
 
-    // Prefill „{" nie jest częścią odpowiedzi — doklejamy go z powrotem.
-    return { raw: `{${body}`, model };
+    return { raw, model };
   },
 };

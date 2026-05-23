@@ -81,6 +81,30 @@ export async function POST(request: Request): Promise<NextResponse> {
       raw = output.raw;
       model = output.model;
     } catch (error) {
+      // Diagnostyka serwerowa — logujemy strukturę błędu adaptera (bez klucza
+      // API i bez treści promptu/źródła), żeby triaż 502 nie wymagał zgadywania.
+      const err = error as {
+        name?: string;
+        message?: string;
+        status?: number;
+        type?: string;
+        error?: { type?: string; message?: string };
+        response?: { status?: number };
+      } | null;
+      console.error("[translate] LLM call failed", {
+        requestId,
+        name: err?.name,
+        message: err?.message,
+        status: err?.status,
+        type: err?.type,
+        errorType: err?.error?.type,
+        errorMessage: err?.error?.message,
+        responseStatus: err?.response?.status,
+        profile: translateRequest.profile,
+        lang: translateRequest.lang,
+        sourceLen: translateRequest.source.length,
+        model: process.env.LLM_MODEL?.trim() || "default",
+      });
       return errorResponse(
         classifyError(error),
         "Nie udało się uzyskać odpowiedzi modelu.",
