@@ -1,157 +1,132 @@
-Poniżej masz wykonaną **jednostronicową koncepcję rozwiązania**. To jest wersja robocza, którą możemy później skrócić do README albo rozwinąć w specyfikację pod vibe coding.
-
----
-
 # Militaria Translation Studio
 
-**AI-assisted localization tool for e-commerce content**
+## Co to jest
 
-## 1. Problem biznesowy
+Lokalny prototyp narzędzia AI do **kontekstowego tłumaczenia treści e-commerce**
+z polskiego na 9 języków europejskich: EN-US, EN-UK, DE, FR, UK, RO, CS, HU, FI.
+Zbudowany jako odpowiedź na zadanie rekrutacyjne na stanowisko AI Automation
+Specialist w Militaria.pl.
 
-Militaria.pl działa na kilkunastu rynkach europejskich i potrzebuje tłumaczeń wielu różnych typów treści: od opisów produktów, przez SEO, marketing, UI, FAQ, aż po treści prawne. Zadanie nie polega więc na prostym tłumaczeniu tekstu z języka polskiego na inny język, ale na **lokalizacji treści e-commerce z zachowaniem kontekstu, stylu, terminologii i celu biznesowego**.
+Jednoekranowy workbench dla nietechnicznego pracownika działu e-commerce / contentu /
+SEO. Operator wybiera typ treści i język docelowy, wkleja polski tekst, opcjonalnie
+dodaje glosariusz lub własną instrukcję, a w wyniku dostaje gotowe tłumaczenie razem
+z listą zachowanych terminów, notatkami jakościowymi, ostrzeżeniami, oceną ryzyka
+i sugestią przeglądu człowieka.
 
-Opis produktu, przycisk w checkout, newsletter i regulamin wymagają zupełnie innych reguł tłumaczenia. Dlatego prototyp traktuje tłumaczenie jako proces kontrolowany: użytkownik wybiera typ treści, język docelowy i opcjonalne reguły, a narzędzie dobiera odpowiedni profil tłumaczeniowy. W zadaniu wskazano, że narzędzie ma obsłużyć 9 języków europejskich i różne typy contentu, a także być czymś więcej niż translacją słowo-w-słowo. 
+Główna teza: **tłumaczenie w dużym e-commerce powinno być sterowanym procesem,
+a nie pojedynczym wywołaniem AI** — inaczej tłumaczy się opis produktu, inaczej
+regulamin, a inaczej SMS marketingowy.
 
----
+## Jak uruchomić
 
-## 2. Użytkownik
+Wymagania: Node 20+ i npm.
 
-Docelowym użytkownikiem jest pracownik działu e-commerce, contentu, marketingu, SEO, obsługi rynku zagranicznego lub osoba odpowiedzialna za publikację treści produktowych.
+```bash
+npm install
+npm run dev
+```
 
-Użytkownik nie musi znać prompt engineeringu ani technicznych zasad pracy z LLM. Powinien móc wejść do prostego panelu, wkleić tekst, wybrać typ treści i język, a następnie otrzymać tłumaczenie wraz z informacją, jak zostało przygotowane oraz na co powinien zwrócić uwagę przed publikacją.
+Aplikacja będzie dostępna pod [http://localhost:3000](http://localhost:3000)
+i działa **bez żadnej konfiguracji** — domyślnie startuje w trybie demo.
 
----
+## Tryb demo i tryb API
 
-## 3. Główna teza rozwiązania
+Tryb wybierany jest po stronie serwera na podstawie zmiennych środowiskowych:
 
-**W dużym e-commerce tłumaczenie nie powinno być jednym uniwersalnym procesem.**
+| Konfiguracja                                       | Tryb     |
+| -------------------------------------------------- | -------- |
+| brak `ANTHROPIC_API_KEY` lub `MOCK_MODE=1`         | **demo** |
+| `ANTHROPIC_API_KEY` ustawiony i `MOCK_MODE` ≠ `1`  | **api**  |
 
-Ten sam model językowy może dawać różną jakość w zależności od tego, czy dostanie kontekst i jasne reguły. Dlatego Militaria Translation Studio wykorzystuje **profile tłumaczeniowe zależne od typu treści i rynku docelowego**. Każdy profil definiuje inny poziom kreatywności, formalności, precyzji, długości wypowiedzi i kontroli terminologii.
+W **trybie demo** aplikacja zwraca gotowe tłumaczenia dla znanych próbek
+(np. Bergen → DE, kampania marketingowa → EN-UK) oraz bezpieczny podgląd
+z podstawieniem glosariusza dla dowolnego innego wejścia — wraz z ostrzeżeniem
+informującym, że to demo. Dzięki temu prototyp można ocenić od razu, bez własnego
+klucza API.
 
-Celem prototypu jest pokazanie, że jakość tłumaczeń można poprawić nie przez samo „podłączenie AI”, ale przez zaprojektowanie procesu: wybór profilu, instrukcje systemowe, glosariusz, zasady ochrony terminów oraz kontrolę jakości.
+W **trybie API** zapytania trafiają do modelu Anthropic (domyślnie Claude Sonnet).
+Klucz konfiguruje się w `.env.local`:
 
----
+```bash
+cp .env.example .env.local
+# uzupełnij ANTHROPIC_API_KEY=...
+```
 
-## 4. Jak działa rozwiązanie
+Aktualny tryb jest widoczny w nagłówku jako badge **Tryb: Demo** lub **Tryb: API**.
 
-Podstawowy flow użytkownika:
+## Jak działa
 
-1. Użytkownik wybiera **typ treści**.
-2. Wybiera **język docelowy**: EN-US, EN-UK, DE, FR, UK, RO, CS, HU lub FI.
-3. Wkleja **tekst źródłowy po polsku**.
-4. Opcjonalnie dodaje **glosariusz branżowy** lub własną instrukcję.
-5. System dobiera odpowiedni **profil tłumaczeniowy**.
-6. AI generuje tłumaczenie.
-7. Narzędzie pokazuje:
+1. Wybierz **typ treści** (11 profili: opis produktu, SEO, marketing, UI, prawne, …).
+2. Wybierz **język docelowy** (9 języków).
+3. Wklej **tekst źródłowy** po polsku.
+4. Opcjonalnie dodaj **glosariusz** (`termin => tłumaczenie` na linię) lub **własną instrukcję**.
+5. Kliknij **Tłumacz** (skrót `Ctrl/Cmd + Enter`).
+6. Po prawej zobaczysz tłumaczenie wraz z listą zachowanych terminów, notatkami
+   jakościowymi, ostrzeżeniami, oceną ryzyka i — jeśli to potrzebne — banerem
+   zalecanego przeglądu człowieka. Wynik kopiujesz jednym kliknięciem
+   (`Ctrl/Cmd + Shift + C`).
 
-   * gotowe tłumaczenie,
-   * notatki jakościowe,
-   * zachowane terminy,
-   * potencjalne ryzyka,
-   * rekomendacje dla człowieka przed publikacją.
-8. Użytkownik kopiuje wynik do dalszego procesu.
+## Kluczowe decyzje
 
----
+1. **Content Translation Profiles.** Rdzeń produktu — 11 profili (`product_long`,
+   `product_short`, `seo`, `guide`, `marketing`, `ui_system`, `informational`,
+   `legal`, `infographic`, `universal`, `custom_prompt`). Każdy ma własny ton,
+   ścisłość, kreatywność, listę chronionych terminów i instrukcję systemową —
+   inaczej tłumaczy się kartę produktu, inaczej regulamin, a inaczej SMS.
+2. **Universal Safety Floor.** Niezależnie od profilu i instrukcji użytkownika
+   model musi zachować 1:1 liczby, jednostki, kalibry, marki, modele, SKU/EAN/GTIN,
+   placeholdery (`{var}`, `%s`, `{{name}}`), tagi HTML/Markdown, URL-e i numery
+   telefonu. Nigdy nie zmyśla cech ani obietnic, których nie ma w źródle.
+3. **Glosariusz branżowy.** Baseline (~135 wpisów: marki, modele, standardy
+   MOLLE / MIL-STD / IP / NIJ, terminy outdoor/militaria, UI, SEO, prawne) jest
+   wstrzykiwany do promptu tylko dla terminów obecnych w źródle. Operator może
+   dodać własne wpisy per zgłoszenie; mają one priorytet nad baseline'em.
+4. **Strukturalny wynik JSON.** Model zwraca obiekt walidowany schematem Zod:
+   `translation`, `qualityNotes`, `preservedTerms`, `warnings`, `styleRationale`,
+   `glossaryApplied`, `riskLevel`, `suggestedHumanReview`. Po stronie serwera
+   uruchamiają się deterministyczne walidacje (diff liczb, placeholderów,
+   chronionych terminów) — dopisują ostrzeżenia, których model mógł nie zgłosić.
+5. **Human-in-the-loop.** Profil prawny zawsze sugeruje przegląd człowieka.
+   Każde ostrzeżenie krytyczne (utracony placeholder, fałszywy przyjaciel PL ↔ CS,
+   brakująca jednostka) podnosi poziom ryzyka i wymusza baner przeglądu.
 
-## 5. Profile tłumaczeniowe
+## Zakres MVP
 
-Rdzeniem narzędzia są **Content Translation Profiles**. To one odróżniają prototyp od zwykłego translatora.
+- jednoekranowy workbench (dwie kolumny, polski UI),
+- 11 profili treści, 9 języków docelowych,
+- tryb demo (bez klucza API) oraz tryb API (Anthropic),
+- glosariusz baseline + glosariusz operatora,
+- 10 gotowych próbek („Wczytaj przykład") z 5 ręcznie przygotowanymi pełnymi tłumaczeniami demo,
+- walidacja Zod + deterministyczne walidacje liczb, placeholderów i chronionych terminów,
+- kontrolowane stany: pusty / ładowanie / sukces / błąd,
+- skróty klawiszowe `Ctrl/Cmd + Enter` (tłumacz) i `Ctrl/Cmd + Shift + C` (kopiuj wynik).
 
-| Profil            | Zastosowanie                                | Główna zasada                                                  |
-| ----------------- | ------------------------------------------- | -------------------------------------------------------------- |
-| **Product Long**  | opisy producentów, długie opisy produktowe  | naturalny styl sprzedażowy, ale bez zmiany parametrów i faktów |
-| **Product Short** | tabele rozmiarowe, instrukcje, porównywarki | zwięzłość, precyzja, zachowanie jednostek i struktury          |
-| **SEO**           | nazwy kategorii, opisy kategorii            | lokalizacja pod intencję wyszukiwania, nie tłumaczenie 1:1     |
-| **Guide**         | artykuły poradnikowe                        | czytelny, ekspercki styl dopasowany do użytkownika końcowego   |
-| **Marketing**     | newslettery, ADS, SMS, maile                | transkreacja, perswazja, naturalne CTA                         |
-| **UI/System**     | checkout, przyciski, banery, komunikaty     | krótkie, jednoznaczne mikrocopy, naturalne dla danego rynku    |
-| **Informational** | FAQ, O nas, płatności                       | jasność, zaufanie, neutralny styl                              |
-| **Legal**         | regulaminy, polityki, bezpieczeństwo        | niska kreatywność, ostrożność, zachowanie sensu prawnego       |
-| **Infographic**   | teksty na infografiki                       | krótko, rytmicznie, z zachowaniem sensu                        |
-| **Universal**     | zwykłe tłumaczenie                          | brak specjalizacji, ogólne tłumaczenie                         |
-| **Custom Prompt** | własna instrukcja użytkownika               | pełna kontrola nad zachowaniem AI                              |
+## Poza zakresem
 
----
+Świadomie nie zostały zaimplementowane (zgodnie z briefem zadania rekrutacyjnego):
 
-## 6. Dlaczego to jest lepsze niż zwykły translator
+- integracja z systemami Militaria.pl, PIM-em, CMS-em ani sklepem,
+- baza danych, autoryzacja użytkowników, deployment,
+- przetwarzanie wsadowe (CSV / XLSX, kolejka tłumaczeń),
+- historia tłumaczeń i wersjonowanie,
+- panel administracyjny glosariusza (CRUD),
+- workflow akceptacji oraz dashboardy analityczne.
 
-Prototyp ma przewagę nad ogólnym translatorem, ponieważ:
+To prototyp pokazujący sposób myślenia o procesie lokalizacji, nie produkcyjna aplikacja.
 
-* dobiera strategię tłumaczenia do typu treści,
-* rozróżnia potrzeby treści produktowych, SEO, marketingowych, UI i prawnych,
-* wspiera różne warianty językowe, w tym EN-US i EN-UK,
-* pozwala użyć glosariusza branżowego,
-* chroni nazwy marek, modele, SKU, jednostki, liczby i parametry techniczne,
-* może generować nie tylko tłumaczenie, ale też komentarz jakościowy,
-* ogranicza kreatywność tam, gdzie liczy się precyzja,
-* pozwala zwiększyć kreatywność tam, gdzie potrzebna jest transkreacja, np. w reklamach i newsletterach.
+## Możliwe rozwinięcie produkcyjne
 
-Najważniejsza różnica: zwykły translator odpowiada na pytanie **„jak przetłumaczyć ten tekst?”**, a ten prototyp odpowiada na pytanie **„jak przygotować tę treść do użycia na konkretnym rynku e-commerce?”**.
+- import / eksport CSV i XLSX oraz kolejka tłumaczeń wsadowych (np. 1 000 opisów / nocą),
+- integracja z PIM-em, Sylius / Shopify / Magento przez webhook,
+- centralny glosariusz z CRUD-em per dział (outdoor / taktyka / odzież),
+- workflow akceptacji przez content managera (review queue),
+- raporty kosztu, czasu i jakości tłumaczeń per rynek, profil i zespół.
 
----
+Wdrożenie produkcyjne należy traktować jako **element procesu lokalizacji
+wspierający ekspansję zagraniczną**, a nie jako „translator AI".
 
-## 7. Zakres MVP
+## Stack
 
-W prototypie powinno znaleźć się:
-
-* lokalnie działająca aplikacja webowa,
-* prosty interfejs dla nietechnicznego użytkownika,
-* wybór typu treści,
-* wybór języka docelowego,
-* pole na tekst źródłowy,
-* opcjonalne pole glosariusza,
-* opcjonalne pole własnej instrukcji,
-* generowanie tłumaczenia,
-* sekcja „Quality Notes”,
-* sekcja „Protected Terms / Preserved Elements”,
-* możliwość skopiowania wyniku,
-* README z opisem decyzji projektowych i instrukcją uruchomienia.
-
-To odpowiada kryteriom zadania: narzędzie ma działać, realizować obietnice z README, pokazywać podejście do różnych typów treści, dawać jakość wyższą niż ogólny translator i być używalne przez pracownika bez wiedzy technicznej. 
-
----
-
-## 8. Poza zakresem MVP
-
-Świadomie nie buduję w prototypie:
-
-* integracji z systemami Militaria.pl,
-* bazy danych,
-* logowania użytkowników,
-* pełnego backendu produkcyjnego,
-* deploymentu,
-* wieloetapowego workflow akceptacji,
-* masowego przetwarzania tysięcy produktów,
-* historii wersji,
-* panelu administracyjnego dla glosariusza.
-
-Te elementy są ważne produkcyjnie, ale nie są potrzebne do pokazania sposobu myślenia i działającego prototypu. Samo zadanie wskazuje, że nie trzeba integrować się z systemami Militaria.pl, budować backendu ani bazy danych oraz że wystarczy działanie lokalne. 
-
----
-
-## 9. Wizja produkcyjnego rozwinięcia
-
-W wersji produkcyjnej narzędzie można rozwinąć w kierunku pełnego workflow lokalizacji treści:
-
-* integracja z PIM, CMS lub systemem zarządzania produktami,
-* import i eksport CSV/XLSX,
-* tłumaczenia wsadowe dla wielu produktów,
-* kolejka zadań tłumaczeniowych,
-* centralny glosariusz marek, kategorii i terminów branżowych,
-* historia wersji tłumaczeń,
-* porównywanie zmian między wersjami,
-* workflow akceptacji przez content managera,
-* automatyczna walidacja liczb, jednostek, SKU i nazw modeli,
-* scoring jakości tłumaczenia,
-* raport kosztu i czasu per język, typ treści i dział,
-* dashboard oszczędności czasu i efektów biznesowych.
-
-Wdrożenie produkcyjne powinno być traktowane nie jako „translator AI”, ale jako element procesu e-commerce wspierający ekspansję zagraniczną, szybsze publikowanie produktów i standaryzację jakości treści.
-
----
-
-## 10. Obietnica prototypu
-
-**Militaria Translation Studio** ma pokazać, że proces tłumaczenia treści e-commerce można usprawnić przez kontrolowany pipeline AI: wybór typu treści, dopasowanie profilu tłumaczeniowego, uwzględnienie języka docelowego, ochronę terminologii, glosariusz, notatki jakościowe i prosty interfejs dla pracownika biznesowego.
-
-Prototyp nie próbuje być pełnym systemem produkcyjnym. Jego celem jest udowodnienie, że kandydat potrafi przełożyć potrzebę biznesową na konkretne, działające narzędzie GenAI oraz świadomie zaprojektować proces automatyzacji z myślą o jakości, użytkowniku i dalszym wdrożeniu.
+Next.js 15 (App Router), TypeScript strict, Tailwind CSS 3.4, Zod,
+`@anthropic-ai/sdk`, `lucide-react`. Pojedynczy endpoint `/api/translate`,
+bez backendu i bazy danych. Skrypty npm: `dev`, `build`, `start`, `lint`, `typecheck`.

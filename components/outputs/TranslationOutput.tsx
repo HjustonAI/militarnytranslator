@@ -32,7 +32,10 @@ export function TranslationOutput({ text, lang }: Props) {
       </div>
       <div className="border-t border-border-soft bg-surface-2 px-4 py-2 font-mono text-[11px] tabular-nums text-ink-500">
         {charCount.toLocaleString("pl-PL")} znaków · ~{wordCount.toLocaleString("pl-PL")} słów ·
-        <kbd className="ml-1 text-[10px]">⌘⇧C</kbd> aby skopiować
+        <kbd className="ml-1 rounded border border-border-soft bg-stone-50 px-1 text-[10px]">
+          Ctrl/Cmd + Shift + C
+        </kbd>{" "}
+        aby skopiować
       </div>
     </div>
   );

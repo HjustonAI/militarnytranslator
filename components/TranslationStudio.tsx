@@ -229,7 +229,9 @@ export function TranslationStudio({ initialMode }: Props) {
                 className="min-w-[160px] flex-1"
               >
                 <span>{pending ? "Tłumaczę…" : "Tłumacz"}</span>
-                <kbd className="ml-1 hidden text-[10px] opacity-70 lg:inline">⌘↵</kbd>
+                <kbd className="ml-1 hidden text-[10px] opacity-80 lg:inline">
+                  Ctrl/Cmd + Enter
+                </kbd>
               </Button>
               <SamplePicker onLoad={handleLoadSample} />
             </div>
