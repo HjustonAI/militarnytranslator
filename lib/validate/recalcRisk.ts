@@ -5,7 +5,9 @@
  * - ostrzeżenie krytyczne => ryzyko wysokie,
  * - ostrzeżenie zwykłe    => ryzyko średnie (o ile nie jest już wysokie),
  * - brak ostrzeżeń        => ryzyko niskie,
- * - przegląd człowieka    => przy ryzyku wysokim lub profilu wymagającym go zawsze.
+ * - przegląd człowieka    => przy ryzyku wysokim, profilu wymagającym go
+ *   zawsze, LUB gdy sam model zasugerował przegląd (np. niejednoznaczne
+ *   źródło — sygnał miękki, którego nie chcemy zgubić).
  */
 
 import type { RiskLevel, TranslationProfile, Warning } from "../types";
@@ -19,12 +21,14 @@ export interface RiskOutcome {
 export function recalcRisk(
   warnings: Warning[],
   profile: TranslationProfile,
+  modelSuggestedHumanReview = false,
 ): RiskOutcome {
   const hasCritical = warnings.some((warning) => warning.severity === "critical");
   const hasWarning = warnings.some((warning) => warning.severity === "warning");
 
   const riskLevel: RiskLevel = hasCritical ? "high" : hasWarning ? "medium" : "low";
-  const suggestedHumanReview = profile.alwaysSuggestHumanReview || riskLevel === "high";
+  const suggestedHumanReview =
+    profile.alwaysSuggestHumanReview || riskLevel === "high" || modelSuggestedHumanReview;
 
   return { riskLevel, suggestedHumanReview };
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CircleAlert, Sparkles } from "lucide-react";
 import { ProductHeader } from "./ProductHeader";
 import { Collapsible } from "./inputs/Collapsible";
@@ -57,6 +57,11 @@ export function TranslationStudio({ initialMode }: Props) {
   const language = useMemo(() => getLanguage(lang), [lang]);
   const isCustom = profile.customInstructionsRequired;
 
+  // Aktywny kontroler wyścigu — anulujemy poprzednie zapytanie, gdy użytkownik
+  // kliknie „Tłumacz" ponownie, żeby odpowiedź z opóźnieniem nie nadpisała
+  // świeższego wyniku.
+  const activeRequestRef = useRef<AbortController | null>(null);
+
   const handleTranslate = useCallback(async (): Promise<void> => {
     setValidationError(null);
     if (source.trim().length === 0) {
@@ -69,6 +74,9 @@ export function TranslationStudio({ initialMode }: Props) {
       );
       return;
     }
+    activeRequestRef.current?.abort();
+    const controller = new AbortController();
+    activeRequestRef.current = controller;
     setPending(true);
     setError(null);
     setResult(null);
@@ -76,6 +84,7 @@ export function TranslationStudio({ initialMode }: Props) {
       const response = await fetch("/api/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           profile: profileId,
           lang,
@@ -84,6 +93,7 @@ export function TranslationStudio({ initialMode }: Props) {
           instructions: instructions.trim() || undefined,
         }),
       });
+      if (controller.signal.aborted) return;
       if (!response.ok) {
         const body = (await response.json()) as TranslateError;
         setError(body);
@@ -91,42 +101,50 @@ export function TranslationStudio({ initialMode }: Props) {
         const body = (await response.json()) as TranslationResult;
         setResult(body);
       }
-    } catch {
+    } catch (error) {
+      if ((error as { name?: string } | null)?.name === "AbortError") return;
       setError({
         kind: "network",
         message: "Coś poszło nie tak po stronie sieci. Spróbuj ponownie.",
       });
     } finally {
-      setPending(false);
+      if (activeRequestRef.current === controller) {
+        activeRequestRef.current = null;
+        setPending(false);
+      }
     }
   }, [profileId, lang, source, glossary, instructions, isCustom]);
 
   const handleLoadSample = useCallback((sample: Sample): void => {
+    activeRequestRef.current?.abort();
+    activeRequestRef.current = null;
     setProfileId(sample.profile);
     setSource(sample.source);
     const preferred = PREFERRED_LANG[sample.id];
     if (preferred) setLang(preferred);
+    setPending(false);
     setResult(null);
     setError(null);
     setValidationError(null);
   }, []);
 
-  // Skróty klawiszowe — Cmd/Ctrl+Enter (tłumacz), Cmd/Ctrl+Shift+C (kopiuj wynik).
+  // Skrót klawiszowy — Cmd/Ctrl+Enter (tłumacz). Krótkie zwarcie, gdy zapytanie
+  // jest już w locie, żeby nie wystrzeliwać równoległych żądań.
+  // Wcześniejszy Cmd/Ctrl+Shift+C został usunięty — kolidował z natywnym
+  // skrótem DevTools w przeglądarkach; do kopiowania służy przycisk „Kopiuj".
   useEffect(() => {
     function onKey(event: KeyboardEvent): void {
       const cmd = event.metaKey || event.ctrlKey;
       if (!cmd) return;
       if (event.key === "Enter" && !event.shiftKey) {
+        if (activeRequestRef.current) return;
         event.preventDefault();
         void handleTranslate();
-      } else if (event.shiftKey && (event.key === "C" || event.key === "c")) {
-        event.preventDefault();
-        if (result?.translation) void navigator.clipboard.writeText(result.translation);
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [handleTranslate, result]);
+  }, [handleTranslate]);
 
   const view: "empty" | "loading" | "success" | "error" = pending
     ? "loading"

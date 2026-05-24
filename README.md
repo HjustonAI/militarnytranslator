@@ -63,8 +63,7 @@ Aktualny tryb jest widoczny w nagłówku jako badge **Tryb: Demo** lub **Tryb: A
 5. Kliknij **Tłumacz** (skrót `Ctrl/Cmd + Enter`).
 6. Po prawej zobaczysz tłumaczenie wraz z listą zachowanych terminów, notatkami
    jakościowymi, ostrzeżeniami, oceną ryzyka i — jeśli to potrzebne — banerem
-   zalecanego przeglądu człowieka. Wynik kopiujesz jednym kliknięciem
-   (`Ctrl/Cmd + Shift + C`).
+   zalecanego przeglądu człowieka. Wynik kopiujesz przyciskiem **Kopiuj**.
 
 ## Kluczowe decyzje
 
@@ -99,7 +98,7 @@ Aktualny tryb jest widoczny w nagłówku jako badge **Tryb: Demo** lub **Tryb: A
 - 10 gotowych próbek („Wczytaj przykład") z 5 ręcznie przygotowanymi pełnymi tłumaczeniami demo,
 - walidacja Zod + deterministyczne walidacje liczb, placeholderów i chronionych terminów,
 - kontrolowane stany: pusty / ładowanie / sukces / błąd,
-- skróty klawiszowe `Ctrl/Cmd + Enter` (tłumacz) i `Ctrl/Cmd + Shift + C` (kopiuj wynik).
+- skrót klawiszowy `Ctrl/Cmd + Enter` (tłumacz).
 
 ## Poza zakresem
 

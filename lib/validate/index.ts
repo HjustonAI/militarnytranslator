@@ -38,7 +38,11 @@ export function runDeterministicValidations(
     ...diffBrands(sourceText, result.translation),
   ];
   const warnings = [...result.warnings, ...extraWarnings];
-  const { riskLevel, suggestedHumanReview } = recalcRisk(warnings, profile);
+  const { riskLevel, suggestedHumanReview } = recalcRisk(
+    warnings,
+    profile,
+    result.suggestedHumanReview,
+  );
 
   return { ...result, warnings, riskLevel, suggestedHumanReview };
 }
