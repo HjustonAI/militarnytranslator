@@ -130,6 +130,32 @@ export async function POST(request: Request): Promise<NextResponse> {
       };
       result = runDeterministicValidations(base, translateRequest.source, profile);
     } else {
+      // Diagnostyka strukturalnej walidacji — sanityzowane (bez API key, bez
+      // pełnego źródła/promptu). Pomaga zlokalizować pole zrywające schemat.
+      if (!parsedJson.ok) {
+        console.error("[translate] structured-output JSON parse failed", {
+          requestId,
+          profile: translateRequest.profile,
+          lang: translateRequest.lang,
+          jsonError: parsedJson.error,
+          rawHead: raw.slice(0, 500),
+        });
+      } else if (schemaResult && !schemaResult.success) {
+        console.error("[translate] structured-output Zod validation failed", {
+          requestId,
+          profile: translateRequest.profile,
+          lang: translateRequest.lang,
+          issues: schemaResult.error.issues.map((issue) => ({
+            path: issue.path.join("."),
+            code: issue.code,
+            message: issue.message,
+          })),
+          topLevelKeys:
+            parsedJson.value && typeof parsedJson.value === "object"
+              ? Object.keys(parsedJson.value as Record<string, unknown>)
+              : null,
+        });
+      }
       // Model nie zwrócił poprawnego JSON-a — bezpieczna odpowiedź zastępcza.
       result = buildFallbackResult(translateRequest, raw);
     }

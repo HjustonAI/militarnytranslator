@@ -34,9 +34,10 @@ Respond with a SINGLE JSON object and nothing else, matching exactly this shape:
 
 OUTPUT RULES:
 - Output ONLY the JSON object. No code fences, no commentary, nothing before or after it.
+- Every double-quote character (") that appears INSIDE a string value MUST be escaped as \\". This is critical when you quote a foreign-language term in a Polish note — write \\"Hydratorpak\\", not "Hydratorpak". Better yet, use Polish guillemets („..." / «...») or single quotes ('...') to avoid the issue entirely.
 - "profileUsed" MUST equal the content profile id given in the CONTENT PROFILE section.
 - "targetLang" MUST equal the target language code given in the TARGET LANGUAGE section.
-- "translation" is written in the TARGET LANGUAGE. Every other text field is written in POLISH — the operator reads them.
+- "translation" is a single JSON string (never an array, never an object) written in the TARGET LANGUAGE. Every other text field is written in POLISH — the operator reads them.
 - All lists are required; use an empty array [] when there is nothing to report (never null).
 - "qualityNotes": 0-5 concrete notes — never generic praise. "kind" is "ok" for a passed check, "info" for a neutral remark.
 - "preservedTerms": list every brand, model, number, unit, standard and placeholder kept 1:1.

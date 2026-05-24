@@ -16,7 +16,12 @@ import Anthropic from "@anthropic-ai/sdk";
 import type { LlmAdapter, LlmCallInput, LlmCallOutput } from "./adapter";
 
 const DEFAULT_MODEL = "claude-sonnet-4-6";
-const MAX_TOKENS = 4096;
+// Sufit znakowy dla pełnego JSON-a kontraktu doc/13 z bogatymi listami
+// (preservedTerms, glossaryApplied, warnings, qualityNotes) plus styleRationale.
+// 4096 okazało się ciasne dla profili produkujących długie listy (seo,
+// marketing) — wycięcie odpowiedzi na granicy `max_tokens` produkuje
+// niepoprawny JSON i wymusza fallback. 8192 daje bezpieczny margines.
+const MAX_TOKENS = 8192;
 
 export const anthropicAdapter: LlmAdapter = {
   id: "anthropic",
@@ -37,6 +42,15 @@ export const anthropicAdapter: LlmAdapter = {
       system: input.prompt.systemMessage,
       messages: [{ role: "user", content: input.prompt.userMessage }],
     });
+
+    if (response.stop_reason === "max_tokens") {
+      // Diagnostyka — wycięcie na max_tokens daje uszkodzony JSON i fallback.
+      console.warn("[anthropic] response truncated at max_tokens", {
+        model,
+        maxTokens: MAX_TOKENS,
+        outputTokens: response.usage?.output_tokens,
+      });
+    }
 
     const raw = response.content
       .map((block) => (block.type === "text" ? block.text : ""))
